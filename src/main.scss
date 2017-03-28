@@ -1,0 +1,257 @@
+$screen-sm: 768px;
+$screen-md: 992px;
+$screen-lg: 1200px;
+
+
+.cor-viz-rents {
+
+  // wrapper for inside <figure> and <figcaption>
+  &__section {
+    padding-top: 20px;
+
+    &--small-multiples {
+
+      .cor-viz-rents__chart, .cor-viz-rents__map {
+        @media (min-width: $screen-md / 2) {
+          width: 50%;
+          float: left;
+        }
+      }
+
+      // padding for single small svg map
+      // the "__wrapper" class comes from `d3-playbooks-maps`, sorry
+      .cor-viz-rents__map .cor-viz-rents__wrapper {
+        padding: 0 20px 0 20px;
+      }
+    }
+  }
+
+  // components
+  // selector style reset see below
+  &__infobox {
+    padding-top: 10px;
+
+    &.-empty {
+      display: block;
+    }
+
+    dt {
+      padding-top: .7em;
+      font-size: 20px;
+      line-height: 1em;
+      font-family: 'Neuzeit','Helvetica','Arial',sans-serif;
+      font-weight: bold;
+    }
+
+    dd {
+      font-weight: normal;
+      line-height: 1em;
+    }
+  }
+
+  &__legend {
+
+    ul {
+      padding: 0;
+      margin: 0;
+
+      li {
+        list-style: none;
+        padding-bottom: 0;
+
+        @media (max-width: $screen-sm) {
+          display: inline;
+          margin-right: 20px;
+        }
+
+        span {
+          display: inline-block;
+          width: 8px;
+          height: 8px;
+          margin-right: 8px;
+        }
+      }
+    }
+  }
+
+  &__bivariate-legend {
+    display: block;
+    width: 280px;
+    margin: 0 auto;
+
+    @media (min-width: $screen-md) {
+      position: absolute;
+      top: 440px;
+      left: 420px;
+    }
+
+    @media (min-width: $screen-lg) {
+      top: 460px;
+      left: 480px;
+    }
+  }
+
+  &__scatter-legend-item {
+    padding-top: 15px;
+
+    svg {
+      float: left;
+
+      circle {
+        fill-opacity: .8;
+        stroke-opacity: 1;
+        stroke: gray;
+      }
+    }
+
+    span {
+      margin-left: 10px;
+      line-height: 30px;
+    }
+  }
+
+  &__title {
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  &__credits, &__annotation {
+    color: #9c9c9c;
+    position: relative;
+    top: -30px;
+    font-size: 15px;
+    clear: left;
+
+    a {
+      border: none;
+      text-decoration: underline;
+      color: inherit;
+    }
+  }
+
+
+  // styling for concrete d3 stuff
+  &__svg {
+
+    .axis {
+      font-weight: normal;
+      font-size: 11px;
+
+      .domain, .tick line {
+        stroke: #555;
+        stroke-width: 1.5;
+      }
+
+      .label {
+        fill: #555;
+        font-weight: normal;
+        font-size: 11px;
+      }
+    }
+
+    path.map__item {
+      stroke: #fff;
+      stroke-width: 2;
+
+      &.-hilight {
+        stroke: gray;
+        stroke-width: 2;
+      }
+    }
+
+    path.line {
+      stroke-width: 2;
+      fill: none;
+    }
+
+    circle {
+      fill-opacity: .8;
+      stroke-width: 1;
+      stroke-opacity: 1;
+      stroke: gray;
+
+      &.-hilight {
+        fill-opacity: 1;
+        stroke: #1a1a1a;
+        stroke-width: 2;
+      }
+    }
+  }
+}
+
+// explicit adjustments
+#rents-map-timeline {
+  margin-top: 10px;
+}
+
+#scatter-plot-selector {
+  margin-top: 25px;
+}
+
+
+.cor-viz-rents__selector {
+  display: block;
+  position: relative;
+
+  /*
+   * Styling for `select` element, borrowed from:
+   * https://github.com/filamentgroup/select-css/blob/master/src/select-css.css
+   * ---
+   * This is the native select, we're making everything but the text invisible so
+   * we can see the button styles in the wrapper */
+  select {
+    width: 100%;
+    margin: 0;
+    outline: none;
+    padding: .2em .4em;
+    border-radius: 0;
+
+
+    /* Prefixed box-sizing rules necessary for older browsers */
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    /* Font size must be 16px to prevent iOS page zoom on focus */
+    font-size: 16px;
+  }
+
+  /* Custom arrow sits on top of the select - could be an image, SVG, icon font,
+   * etc. or the arrow could just baked into the bg image on the select. */
+  &::after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    right: 1em;
+    z-index: 2;
+    /* These hacks make the select behind the arrow clickable in some browsers */
+    pointer-events: none;
+    display: none;
+  }
+
+  @supports (-webkit-appearance: none) or (appearance: none) or ((-moz-appearance: none) and (mask-type: alpha)) {
+
+    &::after {
+      content: '▾'; // custom arrow
+      display: block;
+      position: absolute;
+      right: .6em;
+      top: .3em;
+    }
+
+    /* Remove select styling */
+    select {
+      padding-right: 1.2em;
+      background: none; // inside @supports so that iOS <= 8 display the native arrow
+      border: 1px solid #aaa; // inside @supports so that Android <= 4.3 display the native arrow
+
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
+
+    select:focus {
+      border-color: #000;
+    }
+  }
+}
