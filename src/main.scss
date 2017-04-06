@@ -70,6 +70,12 @@ $screen-lg: 1200px;
           height: 8px;
           margin-right: 8px;
         }
+
+        &.-wb {
+          display: block;
+          padding-top: 15px;
+        }
+
       }
     }
   }
@@ -92,7 +98,7 @@ $screen-lg: 1200px;
   }
 
   &__scatter-legend-item {
-    padding-top: 15px;
+    padding-top: 3px;
 
     svg {
       float: left;
@@ -151,11 +157,11 @@ $screen-lg: 1200px;
 
     path.map__item {
       stroke: #fff;
-      stroke-width: 2;
+      stroke-width: 1;
 
       &.-hilight {
         stroke: gray;
-        stroke-width: 2;
+        stroke-width: 1;
       }
     }
 
@@ -177,6 +183,37 @@ $screen-lg: 1200px;
       }
     }
   }
+
+
+  // embed for cooperation partners
+  // correctiv.css is not present there
+  &__embed {
+    max-width: 750px;
+    position: relative;
+
+    &-map {
+      @media (min-width: $screen-sm) {
+        margin-right: 220px;
+      }
+
+    }
+
+    &-infobox {
+      @media (min-width: $screen-sm) {
+        position: absolute;
+        width: 200px;
+        top: 0;
+        right: 0;
+      }
+
+      dd {
+        // FIXME
+        margin-left: 0px;
+      }
+
+    }
+
+  }
 }
 
 // explicit adjustments
@@ -185,7 +222,7 @@ $screen-lg: 1200px;
 }
 
 #scatter-plot-selector {
-  margin-top: 25px;
+  margin-top: 35px;
 }
 
 
