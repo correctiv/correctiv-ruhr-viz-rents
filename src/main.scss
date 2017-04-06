@@ -87,13 +87,13 @@ $screen-lg: 1200px;
 
     @media (min-width: $screen-md) {
       position: absolute;
-      top: 440px;
-      left: 420px;
+      top: 400px;
+      left: 400px;
     }
 
     @media (min-width: $screen-lg) {
-      top: 460px;
-      left: 480px;
+      top: 400px;
+      left: 420px;
     }
   }
 
