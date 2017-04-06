@@ -43,14 +43,14 @@ const cssNamespace = 'cor-viz-rents'
 d3.playbooks.defaults({cssNamespace})
 
 // initial hilight
-const initialHilight = (viz, name='Wolfsburg') => {
-  viz.ready().then(() => {
-    const initial = viz.data().find(d => d.name === name)
-    viz.hilight(initial)
-    viz.control().trigger(riot.EVT.updateSelector, initial)
-    viz.control().trigger(riot.EVT.updateInfobox, initial)
-  })
-}
+// const initialHilight = (viz, name='Wolfsburg') => {
+//   viz.ready().then(() => {
+//     const initial = viz.data().find(d => d.name === name)
+//     viz.hilight(initial)
+//     viz.control().trigger(riot.EVT.updateSelector, initial)
+//     viz.control().trigger(riot.EVT.updateInfobox, initial)
+//   })
+// }
 
 // bivariate map
 const renderRentMap = ({geoData, data}) => {
@@ -127,7 +127,7 @@ const renderRentMap = ({geoData, data}) => {
   }
 
   M.control().on(riot.EVT.updateInfobox, d => renderTimeline(d))
-  initialHilight(M)
+  // initialHilight(M)
 
 }
 
@@ -197,7 +197,7 @@ const renderScatter = basePath => {
       `
     })
 
-  initialHilight(S)
+  // initialHilight(S)
 }
 
 
