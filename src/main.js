@@ -7,7 +7,7 @@ window.renderRentViz = basePath => {
       const data = d
 
       if (d3.select('#rents-map').node()) renderRentMap({geoData, data})
-      // if (d3.select('#scatter-plot').node()) renderScatter(basePath)
+      if (d3.select('#scatter-plot').node()) renderScatter(basePath)
       if (d3.select('#comparison-ruhr').node()) renderComparisonLines(basePath)
       if (d3.select('#comparison-map-2012')) renderComparisonMaps({geoData, data})
 
@@ -142,7 +142,8 @@ const renderScatter = basePath => {
     xLabel: 'Einwohner pro km²',
     yLabel: 'Mittlerer Mietpreis pro m²',
     xCol: 'density',
-    getYDomain: () => [4, 16],
+    getYDomain: () => [4, 11],
+    yTicks: 5,
     sizeCol: 'size',
     sizeRange: [4, 20],
     groupCol: 'color',
@@ -159,7 +160,7 @@ const renderScatter = basePath => {
         return {
           'color': COLORS['11'],
           'label': label,
-          'size': 30,
+          'size': 40,
           // 'size': radius * 2,
           'radius': radius
         }
@@ -190,7 +191,7 @@ const renderScatter = basePath => {
       itemTemplate: `
         <div class="cor-viz-rents__scatter-legend-item">
           <svg width="{size}" height="{size}">
-            <circle r={radius} cx=15 cy=15 style="fill:{color}"></circle>
+            <circle r={radius} cx=20 cy=20 style="fill:{color}"></circle>
           </svg>
           <span>{label}</span>
         </div>
