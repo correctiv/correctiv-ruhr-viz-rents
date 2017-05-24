@@ -93,7 +93,7 @@ const renderRentMap = ({geoData, data}) => {
     height: 200,
     curve: d3.curveStep,
     timeFormat: '%Y',
-    yExtent: [3.5, 15],
+    yExtent: [0, 10],
     getYAxis: ({yScale}) => d3.axisRight(yScale),
     // getXAxis: ({xScale}) => d3.axisTop(xScale),
     showXLabel: false,
